@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="search-page">
+    <div class="search-container">
+        <div class="search-left">
+            <p class="search-intro">Tür ismine veya ölçümlere göre filtreleme yapın.</p>
+            <form method="get" action="{% url 'search' %}">
+                <input type="text" name="species" placeholder="Tür Ara">
+                <input type="number" step="0.1" name="sepal_length" placeholder="Min Sepal Uzunluğu">
+                <input type="number" step="0.1" name="sepal_width" placeholder="Min Sepal Genişliği">
+                <input type="number" step="0.1" name="petal_length" placeholder="Min Petal Uzunluğu">
+                <input type="number" step="0.1" name="petal_width" placeholder="Min Petal Genişliği">
+                <button type="submit">Filtrele</button>
+            </form>
+        </div>
+        <div class="search-right">
+            <img src="{% static 'img/iris_setosa.jpg' %}" alt="Iris Setosa">
+        </div>
+    </div>
+
+    {% if results %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tür</th>
+                <th>Sepal Uzunluk</th>
+                <th>Sepal Genişlik</th>
+                <th>Petal Uzunluk</th>
+                <th>Petal Genişlik</th>
+                <th>Toplayan</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in results %}
+            <tr>
+                <td>{{ item.species }}</td>
+                <td>{{ item.sepal_length }}</td>
+                <td>{{ item.sepal_width }}</td>
+                <td>{{ item.petal_length }}</td>
+                <td>{{ item.petal_width }}</td>
+                <td>{{ item.collector.first_name }} {{ item.collector.last_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Sonuç bulunamadı.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="delete-box">
+    <h3>Kaydı Silmek İstediğinize Emin Misiniz?</h3>
+    <p>Tür: <strong>{{ iris.species }}</strong> (ID: {{ iris.id }}) verisi kalıcı olarak silinecektir.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-danger">Evet, Sil</button>
+        <a href="{% url 'home' %}" class="btn-secondary">Hayır, Vazgeç</a>
+    </form>
+</div>
+{% endblock %}
