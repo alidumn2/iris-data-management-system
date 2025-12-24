@@ -1,7 +1,13 @@
 from django.contrib import admin
-from django.urls import path
 from django.contrib.auth import views as auth_views
 from iris_classifier import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from iris_classifier.views import IrisViewSet
+
+
+router = DefaultRouter()
+router.register(r'iris', IrisViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls), 
@@ -36,6 +42,11 @@ urlpatterns = [
     path('password-reset-complete/', 
          auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), 
          name='password_reset_complete'),
+
+    # Yapay Zeka Sayfası
+    path('predict/', views.predict_view, name='predict'),
+    # API Sayfası
+    path('api/', include(router.urls)), # API adresimiz: http://127.0.0.1:8000/api/iris/
 ]
 
 from django.conf import settings

@@ -15,4 +15,6 @@ class Iris(models.Model):
     petal_width = models.FloatField()
     species = models.CharField(max_length=30)
     collector = models.ForeignKey(Collector, on_delete=models.CASCADE)
+
+
     

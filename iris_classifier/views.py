@@ -6,6 +6,14 @@ from django.contrib.auth.decorators import login_required, permission_required
 import csv, io
 from django.http import HttpResponse
 from .models import Iris, Collector
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+from sklearn.datasets import load_iris
+from rest_framework import viewsets
+from .serializers import IrisSerializer
+
+import numpy as np
 
 # --- ANA SAYFA VE LİSTELEME (READ) --- [cite: 151]
 def home_view(request):
@@ -159,3 +167,58 @@ def export_iris_csv(request):
         writer.writerow([iris.sepal_length, iris.sepal_width, iris.petal_length, iris.petal_width, iris.species])
         
     return response
+
+
+def predict_view(request):
+
+    prediction = None
+    selected_algo = ""
+
+    if request.method == 'POST':
+        try:
+            # .get() kullanırken tırnak içindeki isimler HTML'deki name ile aynı olmalı!
+            sl = request.POST.get('sepal_length')
+            sw = request.POST.get('sepal_width')
+            pl = request.POST.get('petal_length')
+            pw = request.POST.get('petal_width')
+            algo = request.POST.get('algorithm')
+
+            # Eğer verilerden biri bile gelmediyse hata mesajı göster
+            if None in [sl, sw, pl, pw]:
+                prediction = "Hata: Bazı veriler eksik gönderildi!"
+            else:
+                # Hepsi tamamsa float'a çevir
+                sl, sw, pl, pw = float(sl), float(sw), float(pl), float(pw)
+
+            # Scikit-learn'ün içindeki hazır 150 verilik seti yüklüyoruz
+            # Bu set sayesinde veritabanına ihtiyacımız kalmıyor
+            iris = load_iris()
+            X = iris.data  # 150 çiçeğin ölçümleri
+            y = iris.target # Bu çiçeklerin türleri (0, 1, 2 olarak)
+
+            # Kullanıcının seçtiği algoritmayı hazırlıyoruz
+            if selected_algo == 'knn':
+                model = KNeighborsClassifier(n_neighbors=5)
+            elif selected_algo == 'dt':
+                model = DecisionTreeClassifier()
+            else:
+                model = SVC()
+
+            # 4. Modeli hazır veriyle eğitiyoruz
+            model.fit(X, y)
+
+            # 5. Tahmin yapıyoruz
+            res = model.predict([[sl, sw, pl, pw]])
+            
+            # 6. Sayısal sonucu (0,1,2) isimlere çeviriyoruz (Setosa, vb.)
+            prediction = iris.target_names[res[0]].capitalize()
+            
+        except Exception as e:
+            prediction = f"Hata oluştu: {e}"
+            
+    return render(request, 'predict.html', {'prediction': prediction})
+
+
+class IrisViewSet(viewsets.ModelViewSet):
+    queryset = Iris.objects.all()
+    serializer_class = IrisSerializer

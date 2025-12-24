@@ -15,7 +15,7 @@
             <nav>
                 <div class="nav-container"> <a href="{% url 'home' %}">Ana Sayfa</a> | <a
                         href="{% url 'search' %}">Arama</a> | <a href="{% url 'import_csv' %}">Veri İşlemleri</a> |
-                    <a href="https://archive.ics.uci.edu/ml/datasets/iris">UCI Kaynağı</a>
+                    <a href="https://archive.ics.uci.edu/ml/datasets/iris">UCI Kaynağı</a> | <a href="{% url 'predict' %}">Tahmin Yap</a>
                     {% if user.is_authenticated %}
                     <span>Hoş geldin, {{ user.username }}</span>
                     <form action="{% url 'logout' %}" method="post" style="display:inline;">
