@@ -3,8 +3,8 @@
 {% block content %}
 <div class="csv-container">
     <div class="export-section">
-        <p>Mevcut verileri CSV olarak indirmek için:</p>
-        <a href="{% url 'export_csv' %}">Verileri İndir (CSV)</a>
+        <p>To download current data as CSV:</p>
+        <a href="{% url 'export_csv' %}">Download Data (CSV)</a>
     </div>
 
     {% if perms.iris_classifier.add_iris %}
@@ -12,14 +12,14 @@
         <form method="post" enctype="multipart/form-data" action="{% url 'import_csv' %}">
             {% csrf_token %}
             <input type="file" name="csv_file" accept=".csv">
-            <button type="submit">CSV Yükle</button>
+            <button type="submit">Upload CSV</button>
         </form>
     </div>
     {% endif %}
 
     <ol>
-        <li>Dosyanın virgülle ayrılmış olduğundan emin olun.</li>
-        <li>Sütun sırasına dikkat edin.</li>
+        <li>Ensure the file is comma-separated.</li>
+        <li>Pay attention to column order.</li>
     </ol>
 </div>
 {% endblock %}

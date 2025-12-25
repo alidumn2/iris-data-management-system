@@ -15,12 +15,12 @@ from .serializers import IrisSerializer
 
 import numpy as np
 
-# --- ANA SAYFA VE LİSTELEME (READ) --- [cite: 151]
+# --- ANA SAYFA VE LİSTELEME (READ)
 def home_view(request):
     irises = Iris.objects.all()
     return render(request, 'iris_list.html', {'irises': irises})
 
-# --- CRUD İŞLEMLERİ --- [cite: 152]
+# --- CRUD İŞLEMLERİ ---
 @login_required
 def iris_create(request):
     if request.method == "POST":
@@ -67,8 +67,7 @@ def iris_delete(request, pk):
         return redirect('home')
     return render(request, 'iris_delete.html', {'iris': iris})
 
-# --- CSV İÇE AKTARMA (IMPORT) --- [cite: 168, 169]
-@login_required
+# --- CSV İÇE AKTARMA (IMPORT) ---
 @login_required
 def import_iris_csv(request):
     if request.method == "POST":
@@ -185,7 +184,7 @@ def predict_view(request):
 
             # Eğer verilerden biri bile gelmediyse hata mesajı göster
             if None in [sl, sw, pl, pw]:
-                prediction = "Hata: Bazı veriler eksik gönderildi!"
+                prediction = "Error: Some data is missing!"
             else:
                 # Hepsi tamamsa float'a çevir
                 sl, sw, pl, pw = float(sl), float(sw), float(pl), float(pw)
@@ -214,7 +213,7 @@ def predict_view(request):
             prediction = iris.target_names[res[0]].capitalize()
             
         except Exception as e:
-            prediction = f"Hata oluştu: {e}"
+            prediction = f"Error occurred: {e}"
             
     return render(request, 'predict.html', {'prediction': prediction})
 

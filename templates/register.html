@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
 <div class="auth-wrapper">
-    <h2>Yeni Hesap Oluştur</h2>
+    <h2>Create New Account</h2>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }} <button type="submit">Kayıt Ol</button>
+        {{ form.as_p }} <button type="submit">Register</button>
     </form>
-    <p>Zaten hesabınız var mı? <a href="{% url 'login' %}">Giriş Yapın</a></p>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 </div>
 {% endblock %}

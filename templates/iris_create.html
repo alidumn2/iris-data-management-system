@@ -2,20 +2,20 @@
 {% load static %}
 {% block content %}
 <div class="form-wrapper">
-    <h2>Yeni Veri Girişi</h2>
+    <h2>New Data Entry</h2>
     <div class="anatomy-guide">
-        <h3>Ölçüm Rehberi (Sepal vs Petal)</h3>
-        <p>Lütfen aşağıdaki şemaya göre uzunluk ve genişlik değerlerini giriniz:</p>
-        <img src="{% static 'img/iris_anatomy.jpg' %}" alt="Iris Anatomisi" class="guide-img">
+        <h3>Measurement Guide (Sepal vs Petal)</h3>
+        <p>Please enter length and width values according to the diagram below:</p>
+        <img src="{% static 'img/iris_anatomy.jpg' %}" alt="Iris Anatomy" class="guide-img">
     </div>
     <form method="post">
         {% csrf_token %}
-        <p>Tür: <input type="text" name="species" required></p>
-        <p>Sepal Uzunluk: <input type="number" step="0.1" name="sepal_length" required></p>
-        <p>Sepal Genişlik: <input type="number" step="0.1" name="sepal_width" required></p>
-        <p>Petal Uzunluk: <input type="number" step="0.1" name="petal_length" required></p>
-        <p>Petal Genişlik: <input type="number" step="0.1" name="petal_width" required></p>
-        <p>Güvenlik Kodu: <input type="password" name="secret"></p> <button type="submit">Veriyi Kaydet</button>
+        <p>Species: <input type="text" name="species" required></p>
+        <p>Sepal Length: <input type="number" step="0.1" name="sepal_length" required></p>
+        <p>Sepal Width: <input type="number" step="0.1" name="sepal_width" required></p>
+        <p>Petal Length: <input type="number" step="0.1" name="petal_length" required></p>
+        <p>Petal Width: <input type="number" step="0.1" name="petal_width" required></p>
+        <p>Security Code: <input type="password" name="secret"></p> <button type="submit">Save Data</button>
     </form>
 </div>
 {% endblock %}

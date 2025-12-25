@@ -2,13 +2,13 @@
 {% load static %}
 {% block content %}
 <div class="delete-box">
-    <h3>Kaydı Silmek İstediğinize Emin Misiniz?</h3>
-    <p>Tür: <strong>{{ iris.species }}</strong> (ID: {{ iris.id }}) verisi kalıcı olarak silinecektir.</p>
+    <h3>Are You Sure You Want to Delete the Record?</h3>
+    <p>Species: <strong>{{ iris.species }}</strong> (ID: {{ iris.id }}) data will be permanently deleted.</p>
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn-danger">Evet, Sil</button>
-        <a href="{% url 'home' %}" class="btn-secondary">Hayır, Vazgeç</a>
+        <button type="submit" class="btn-danger">Yes, Delete</button>
+        <a href="{% url 'home' %}" class="btn-secondary">No, Cancel</a>
     </form>
 </div>
 {% endblock %}

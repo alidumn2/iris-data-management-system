@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="logout-page">
-    <h2>Oturumu Kapat</h2>
-    <p>Oturumunuzu sonlandırmak istediğinize emin misiniz?</p>
+    <h2>Logout</h2>
+    <p>Are you sure you want to end your session?</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Çıkış Yap</button>
+        <button type="submit">Logout</button>
     </form>
 </div>
 {% endblock %}

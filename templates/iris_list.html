@@ -3,20 +3,20 @@
 {% block content %}
 <div class="list-container">
     <div class="image-section">
-        <h2>Iris Veri Setine Genel Bakış</h2>
-        <img src="{% static 'img/iris_logo.jpg' %}" alt="Iris Türleri" class="page-img">
+        <h2>Iris Dataset Overview</h2>
+        <img src="{% static 'img/iris_logo.jpg' %}" alt="Iris Species" class="page-img">
     </div>
     <table class="table">
         <thead>
             <tr>
-                <th>Tür</th>
+                <th>Species</th>
                 <th>Sepal L.</th>
                 <th>Sepal W.</th>
                 <th>Petal L.</th>
                 <th>Petal W.</th>
-                <th>Toplayan</th>
+                <th>Collector</th>
                 {% if perms.iris_classifier.change_iris or perms.iris_classifier.delete_iris %}
-                <th>İşlemler</th>
+                <th>Actions</th>
                 {% endif %}
             </tr>
         </thead>
@@ -32,10 +32,10 @@
                 <td>
                     <div class="action-buttons">
                         {% if perms.iris_classifier.change_iris %}
-                        <a href="{% url 'iris_update' iris.pk %}" class="btn-sm btn-edit">Düzenle</a>
+                        <a href="{% url 'iris_update' iris.pk %}" class="btn-sm btn-edit">Edit</a>
                         {% endif %}
                         {% if perms.iris_classifier.delete_iris %}
-                        <a href="{% url 'iris_delete' iris.pk %}" class="btn-sm btn-delete">Sil</a>
+                        <a href="{% url 'iris_delete' iris.pk %}" class="btn-sm btn-delete">Delete</a>
                         {% endif %}
                     </div>
                 </td>
@@ -46,7 +46,7 @@
 
     {% if perms.iris_classifier.add_iris %}
     <div class="action-box">
-        <a href="{% url 'iris_create' %}" class="btn-primary">Yeni Kayıt Ekle</a>
+        <a href="{% url 'iris_create' %}" class="btn-primary">Add New Record</a>
     </div>
     {% endif %}
 </div>

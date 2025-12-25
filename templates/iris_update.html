@@ -3,33 +3,33 @@
 {% block content %}
 <div class="update-container">
     <div class="update-header">
-        <p>Kaydı güncelleme formu</p>
+        <p>Record update form</p>
     </div>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label>Sepal Uzunluğu:</label>
+            <label>Sepal Length:</label>
             <input type="number" step="0.1" name="sepal_length" value="{{ iris.sepal_length }}">
         </div>
         <div class="form-group">
-            <label>Sepal Genişliği:</label>
+            <label>Sepal Width:</label>
             <input type="number" step="0.1" name="sepal_width" value="{{ iris.sepal_width }}">
         </div>
         <div class="form-group">
-            <label>Petal Uzunluğu:</label>
+            <label>Petal Length:</label>
             <input type="number" step="0.1" name="petal_length" value="{{ iris.petal_length }}">
         </div>
         <div class="form-group">
-            <label>Petal Genişliği:</label>
+            <label>Petal Width:</label>
             <input type="number" step="0.1" name="petal_width" value="{{ iris.petal_width }}">
         </div>
         <div class="form-group">
-            <label>Tür:</label>
+            <label>Species:</label>
             <input type="text" name="species" value="{{ iris.species }}">
         </div>
         <div class="btn-group">
-            <button type="submit" class="btn-primary">Değişiklikleri Kaydet</button>
-            <a href="{% url 'home' %}" class="btn-secondary">İptal Et ve Geri Dön</a>
+            <button type="submit" class="btn-primary">Save Changes</button>
+            <a href="{% url 'home' %}" class="btn-secondary">Cancel and Return</a>
         </div>
     </form>
 </div>

@@ -4,14 +4,14 @@
 <div class="search-page">
     <div class="search-container">
         <div class="search-left">
-            <p class="search-intro">Tür ismine veya ölçümlere göre filtreleme yapın.</p>
+            <p class="search-intro">Filter by species name or measurements.</p>
             <form method="get" action="{% url 'search' %}">
-                <input type="text" name="species" placeholder="Tür Ara">
-                <input type="number" step="0.1" name="sepal_length" placeholder="Min Sepal Uzunluğu">
-                <input type="number" step="0.1" name="sepal_width" placeholder="Min Sepal Genişliği">
-                <input type="number" step="0.1" name="petal_length" placeholder="Min Petal Uzunluğu">
-                <input type="number" step="0.1" name="petal_width" placeholder="Min Petal Genişliği">
-                <button type="submit">Filtrele</button>
+                <input type="text" name="species" placeholder="Search Species">
+                <input type="number" step="0.1" name="sepal_length" placeholder="Min Sepal Length">
+                <input type="number" step="0.1" name="sepal_width" placeholder="Min Sepal Width">
+                <input type="number" step="0.1" name="petal_length" placeholder="Min Petal Length">
+                <input type="number" step="0.1" name="petal_width" placeholder="Min Petal Width">
+                <button type="submit">Filter</button>
             </form>
         </div>
         <div class="search-right">
@@ -23,12 +23,12 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Tür</th>
-                <th>Sepal Uzunluk</th>
-                <th>Sepal Genişlik</th>
-                <th>Petal Uzunluk</th>
-                <th>Petal Genişlik</th>
-                <th>Toplayan</th>
+                <th>Species</th>
+                <th>Sepal Length</th>
+                <th>Sepal Width</th>
+                <th>Petal Length</th>
+                <th>Petal Width</th>
+                <th>Collector</th>
             </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@
         </tbody>
     </table>
     {% else %}
-    <p>Sonuç bulunamadı.</p>
+    <p>No results found.</p>
     {% endif %}
 </div>
 {% endblock %}
