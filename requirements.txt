@@ -1,0 +1,4 @@
+django
+djangorestframework
+scikit-learn
+numpy
