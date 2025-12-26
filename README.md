@@ -45,7 +45,7 @@ This project is a Django-based web application designed to collect, manage, and 
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/yourusername/iris-data-management-system.git
+    git clone https://github.com/alidumn2/iris-data-management-system.git
     cd iris-data-management-system
     ```
 
