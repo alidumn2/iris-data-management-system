@@ -1,16 +1,10 @@
-/* premium-style.css */
-
-/* --- 1. Reset & Typography --- */
+/* --- 1. Colors --- */
 :root {
     --primary-color: #2c3e50;
-    /* Deep Blue */
     --secondary-color: #34495e;
-    /* Darker Blue */
     --accent-color: #3498db;
-    /* Bright Blue */
     --accent-hover: #2980b9;
     --background-color: #f8f9fa;
-    /* Very Light Gray */
     --text-color: #333;
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -18,6 +12,7 @@
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* --- 2. Reset --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -31,8 +26,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- 2. Layout & Wrapper --- */
-/* Flexbox wrapper for sticky footer */
+/* --- 3. Layout --- */
 #wrapper,
 .main-wrapper {
     display: flex;
@@ -44,12 +38,11 @@ body {
     flex: 1;
     width: 100%;
     max-width: 1200px;
-    /* Max width for large screens */
     margin: 30px auto;
     padding: 0 20px;
 }
 
-/* --- 3. Header & Navigation --- */
+/* --- 4. Header --- */
 .header {
     background-color: var(--primary-color);
     color: var(--white);
@@ -93,7 +86,7 @@ nav {
     font-size: 0.9em;
 }
 
-/* --- 4. Cards & Containers --- */
+
 .container,
 .card-div,
 .list-container,
@@ -114,9 +107,7 @@ nav {
     border-radius: var(--radius);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     margin: 50px auto;
-    /* Center vertically and horizontally */
     max-width: 400px;
-    /* Restrict width */
     text-align: center;
 }
 
@@ -128,13 +119,11 @@ nav {
 
 .input-row {
     text-align: left;
-    /* Align labels and inputs to the left */
     margin-bottom: 15px;
 }
 
 .login-container button {
     width: 100%;
-    /* Full width button */
     margin-top: 20px;
 }
 
@@ -154,9 +143,7 @@ nav {
 
 .card-div {
     border: none;
-    /* Override old border */
     text-align: left;
-    /* Reset text align */
     transition: transform 0.2s;
 }
 
@@ -193,7 +180,6 @@ textarea {
     font-size: 16px;
     transition: border-color 0.3s;
     margin-bottom: 15px;
-    /* Added spacing */
 }
 
 input:focus {
@@ -210,7 +196,6 @@ input[type="submit"] {
     border: none;
     padding: 12px 24px;
     border-radius: 50px;
-    /* Pill shape */
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -228,7 +213,6 @@ input[type="submit"]:hover {
 
 .logout-btn button {
     background-color: #e74c3c;
-    /* Red for logout */
 }
 
 .logout-btn button:hover {
@@ -247,7 +231,6 @@ input[type="submit"]:hover {
 
 .btn-edit {
     background-color: #f39c12;
-    /* Orange */
 }
 
 .btn-edit:hover {
@@ -256,7 +239,6 @@ input[type="submit"]:hover {
 
 .btn-delete {
     background-color: #e74c3c;
-    /* Red */
 }
 
 .btn-delete:hover {
@@ -265,7 +247,6 @@ input[type="submit"]:hover {
 
 .btn-secondary {
     background-color: #e74c3c;
-    /* Red */
     color: white;
     padding: 12px 24px;
     border-radius: 50px;
@@ -277,7 +258,6 @@ input[type="submit"]:hover {
     cursor: pointer;
     margin-top: 10px;
     margin-left: 20px;
-    /* Shift right */
 }
 
 .btn-secondary:hover {
@@ -299,7 +279,6 @@ table {
     background: var(--white);
     border-radius: var(--radius);
     overflow: hidden;
-    /* For border radius */
 }
 
 th,

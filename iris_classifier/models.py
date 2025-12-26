@@ -1,6 +1,10 @@
 from django.db import models
 
 class Collector(models.Model):
+    """
+    Stores information about the user collecting the data.
+    Linked to the main User model.
+    """
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
@@ -9,6 +13,10 @@ class Collector(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE, null=True, blank=True)
 
 class Iris(models.Model):
+    """
+    Represents an Iris flower data point with measurements and species.
+    Linked to a Collector.
+    """
     sepal_length = models.FloatField()
     sepal_width = models.FloatField()
     petal_length = models.FloatField()
