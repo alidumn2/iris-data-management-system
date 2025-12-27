@@ -1,0 +1,17 @@
+<div class="header">
+    <h1>Iris Data Management Panel</h1>
+    <nav>
+        <div class="nav-container"> <a href="{% url 'home' %}">Home</a> | <a
+                href="{% url 'search' %}">Search</a> | <a href="{% url 'import_csv' %}">Data Operations</a> |
+            <a href="https://archive.ics.uci.edu/ml/datasets/iris">UCI Source</a> | <a href="{% url 'predict' %}">Predict</a>
+            {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}</span>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}<button type="submit">Logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+</div>

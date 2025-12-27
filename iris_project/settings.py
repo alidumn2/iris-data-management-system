@@ -17,7 +17,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-dbf(+5wvc1rw1n87gw8jlwgz5=g7ocs+&#8h!2qv@lq!^5$#30'
@@ -72,7 +71,6 @@ WSGI_APPLICATION = 'iris_project.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -83,7 +81,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -102,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/6.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -114,19 +110,14 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = '/static/'
 import os
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# Giriş yapılması gereken sayfalarda yönlendirilecek adres
+
 LOGIN_URL = 'login' 
-
-# Giriş yaptıktan sonra gidilecek sayfa
 LOGIN_REDIRECT_URL = 'home'
-
-# Çıkış yaptıktan sonra gidilecek sayfa
 LOGOUT_REDIRECT_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
