@@ -47,7 +47,7 @@ urlpatterns = [
     path('predict/', views.predict_view, name='predict'),
 
     # API View
-    path('api/', include(router.urls)), # API adresimiz: http://127.0.0.1:8000/api/iris/
+    path('api/', include(router.urls)), # API URL: http://127.0.0.1:8000/api/iris/
 ]
 
 from django.conf import settings

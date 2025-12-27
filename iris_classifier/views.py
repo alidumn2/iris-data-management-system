@@ -12,6 +12,7 @@ from sklearn.svm import SVC
 from sklearn.datasets import load_iris
 from rest_framework import viewsets
 from .serializers import IrisSerializer
+from .forms import CustomUserCreationForm
 
 import numpy as np
 
@@ -95,7 +96,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             # Automatically add the user to the 'Reader' group
-            group = Group.objects.get(name='Reader')
+            group, created = Group.objects.get_or_create(name='Reader')
             user.groups.add(group)
             login(request, user)
             return redirect('home') # Redirect to home page
@@ -187,6 +188,8 @@ def predict_view(request):
             iris = load_iris()
             X = iris.data  # Features (measurements)
             y = iris.target # Target labels (0, 1, 2)
+
+            selected_algo = algo
 
             # Initialize the selected algorithm
             if selected_algo == 'knn':
